@@ -4,11 +4,12 @@ import { Navbar, Container, Nav } from "react-bootstrap";
 import bgImg from "./imges/bg.png";
 import { useState } from "react";
 import data from "./data.js";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import Detail from "./pages/Detail";
 
 function App() {
   let [shoes] = useState(data);
+  let navigate = useNavigate();
 
   return (
     <div className="App">
@@ -16,8 +17,20 @@ function App() {
         <Container>
           <Navbar.Brand href="#home">마켓</Navbar.Brand>
           <Nav className="me-auto">
-            <Link to="/">홈</Link>
-            <Link to="/detail">상세페이지</Link>
+            <Nav.Link
+              onClick={() => {
+                navigate("/");
+              }}
+            >
+              Home
+            </Nav.Link>
+            <Nav.Link
+              onClick={() => {
+                navigate("/detail");
+              }}
+            >
+              Detail
+            </Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -43,6 +56,7 @@ function App() {
           }
         />
         <Route path="/detail" element={<Detail />} />
+        <Route path="*" element={<div>없는 페이지입니다</div>} />
       </Routes>
     </div>
   );
