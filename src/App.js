@@ -56,8 +56,23 @@ function App() {
           }
         />
         <Route path="/detail" element={<Detail />} />
+
+        <Route path="/about" element={<About />}>
+          <Route path="/about/member" element={<div>회원</div>} />
+          <Route path="/about/location" element={<div>위치정보 </div>} />
+        </Route>
+
         <Route path="*" element={<div>없는 페이지입니다</div>} />
       </Routes>
+    </div>
+  );
+}
+
+function About() {
+  return (
+    <div>
+      <h4>회사정보</h4>
+      <Outlet></Outlet>
     </div>
   );
 }
