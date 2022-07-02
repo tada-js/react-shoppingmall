@@ -1,18 +1,10 @@
 import { useParams } from "react-router-dom";
-import styled from "styled-components"
-
-const YellowBtn = styled.button`
-  background: ${props => props.color};
-  color: black;
-  padding: 10px;
-`
 
 function Detail(props) {
   let {id} = useParams()
 
   return (
     <div className="container">
-      <YellowBtn color="blue">버튼</YellowBtn>      
       <div className="row">
         <div className="col-md-6">
           <img
